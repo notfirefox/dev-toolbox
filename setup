@@ -17,6 +17,7 @@ toolbox run sudo dnf -y install neovim \
                                 lua-language-server \
                                 clippy rust-analyzer \
                                 rustfmt \
+                                gh \
                                 zsh
 
 echo "Done!"
