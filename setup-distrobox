@@ -1,12 +1,14 @@
 #!/bin/sh
 
-# TODO: Fix distrobox setup script
 echo "Creating container"
-distrobox create -n "dev"
+distrobox create -n "dev" -i fedora:40
 
 __run() {
     distrobox enter "dev" -- "$@"
 }
+
+echo "Installing dnf plugins (copr)"
+__run sudo dnf -y install dnf-plugins-core
 
 echo "Enabling copr repositories"
 __run sudo dnf -y copr enable petersen/haskell-language-server
