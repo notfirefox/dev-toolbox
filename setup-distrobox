@@ -1,10 +1,12 @@
 #!/bin/sh
 
+CONTAINER_NAME="fedora"
+
 echo "Creating container"
-distrobox create -n "dev" -i fedora:40
+distrobox create -n "$CONTAINER_NAME" -i fedora:40
 
 __run() {
-    distrobox enter "dev" -- "$@"
+    distrobox enter "$CONTAINER_NAME" -- "$@"
 }
 
 echo "Installing dnf plugins (copr)"
