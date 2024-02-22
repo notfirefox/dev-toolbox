@@ -28,6 +28,7 @@ __run sudo dnf -y install neovim \
                                  clippy rust-analyzer \
                                  rustfmt \
                                  gh \
+                                 yt-dlp \
                                  zsh
 
 echo "Done!"
