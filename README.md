@@ -1,8 +1,9 @@
 # Development Container
-Development Container using Toolbox
+Development Container using Distrobox
 
-## :warning: Status
-This container based workflow currently has some issues including, but not limited to:
+## :warning: State of Toolbx
+Toolbx is, as of now, not suited for this workflow because it has some issues 
+including, but not limited to:
 
 - [Neovim undercurl not working](https://github.com/notfirefox/dev-container/issues/2)
 - [gh auth login does not work inside of dev container](https://github.com/notfirefox/dev-container/issues/1)
@@ -12,5 +13,5 @@ This container based workflow currently has some issues including, but not limit
 ## Installation
 Run the setup script.
 ```sh
-./setup
+./setup-distrobox
 ```

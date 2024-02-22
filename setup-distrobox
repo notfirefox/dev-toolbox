@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# TODO: Fix distrobox setup script
+echo "Creating container"
+distrobox create -n "dev"
+
+__run() {
+    distrobox enter "dev" -- "$@"
+}
+
+echo "Enabling copr repositories"
+__run sudo dnf -y copr enable petersen/haskell-language-server
+__run sudo dnf -y copr enable yorickpeterse/lua-language-server
+
+echo "Installing development software"
+__run sudo dnf -y install neovim \
+                                 fd-find \
+                                 ripgrep \
+                                 clang-tools-extra \
+                                 nodejs-bash-language-server \
+                                 shellcheck \
+                                 haskell-language-server \
+                                 lua-language-server \
+                                 clippy rust-analyzer \
+                                 rustfmt \
+                                 gh \
+                                 zsh
+
+echo "Done!"

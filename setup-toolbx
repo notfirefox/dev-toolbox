@@ -13,6 +13,7 @@ toolbox run sudo dnf -y install neovim \
                                 ripgrep \
                                 clang-tools-extra \
                                 nodejs-bash-language-server \
+                                shellcheck \
                                 haskell-language-server \
                                 lua-language-server \
                                 clippy rust-analyzer \
