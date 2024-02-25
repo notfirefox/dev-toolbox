@@ -13,16 +13,17 @@ __run sudo dnf -y copr enable yorickpeterse/lua-language-server
 
 echo "Installing development software"
 __run sudo dnf -y install neovim \
-                                fd-find \
-                                ripgrep \
-                                clang-tools-extra \
-                                nodejs-bash-language-server \
-                                shellcheck \
-                                haskell-language-server \
-                                lua-language-server \
-                                clippy rust-analyzer \
-                                rustfmt \
-                                gh \
-                                zsh
+    fd-find \
+    ripgrep \
+    clang-tools-extra \
+    nodejs-bash-language-server \
+    shellcheck \
+    haskell-language-server \
+    lua-language-server \
+    clippy rust-analyzer \
+    rustfmt \
+    gh \
+    yt-dlp \
+    zsh
 
 echo "Done!"
