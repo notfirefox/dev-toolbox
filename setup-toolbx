@@ -3,7 +3,7 @@
 CONTAINER_NAME="fedora"
 
 echo "Creating toolbox"
-toolbox create "$CONTAINER_NAME"
+toolbox --assumeyes create "$CONTAINER_NAME"
 
 __run() {
     toolbox run --container "$CONTAINER_NAME" "$@"
