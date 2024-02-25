@@ -2,7 +2,7 @@
 
 CONTAINER_NAME="fedora"
 
-echo "Creating container"
+echo "Creating fedora container"
 distrobox create -n "$CONTAINER_NAME" -i fedora:40
 
 __run() {

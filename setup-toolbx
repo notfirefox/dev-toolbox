@@ -2,7 +2,7 @@
 
 CONTAINER_NAME="fedora"
 
-echo "Creating toolbox"
+echo "Creating fedora container"
 toolbox --assumeyes create "$CONTAINER_NAME"
 
 __run() {
