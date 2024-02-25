@@ -3,12 +3,16 @@
 echo "Creating toolbox"
 toolbox create
 
+__run() {
+    toolbox run "$@"
+}
+
 echo "Enabling copr repositories"
-toolbox run sudo dnf -y copr enable petersen/haskell-language-server
-toolbox run sudo dnf -y copr enable yorickpeterse/lua-language-server
+__run sudo dnf -y copr enable petersen/haskell-language-server
+__run sudo dnf -y copr enable yorickpeterse/lua-language-server
 
 echo "Installing development software"
-toolbox run sudo dnf -y install neovim \
+__run sudo dnf -y install neovim \
                                 fd-find \
                                 ripgrep \
                                 clang-tools-extra \
