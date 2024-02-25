@@ -31,4 +31,7 @@ __run sudo dnf -y install neovim \
                                  yt-dlp \
                                  zsh
 
+echo "Changing shell to zsh"
+__run chsh -s "/bin/zsh"
+
 echo "Done!"
