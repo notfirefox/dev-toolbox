@@ -1,10 +1,12 @@
 #!/bin/sh
 
+CONTAINER_NAME="fedora"
+
 echo "Creating toolbox"
-toolbox create
+toolbox create "$CONTAINER_NAME"
 
 __run() {
-    toolbox run "$@"
+    toolbox run --container "$CONTAINER_NAME" "$@"
 }
 
 echo "Enabling copr repositories"
