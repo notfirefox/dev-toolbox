@@ -20,7 +20,7 @@ echo "Installing development software"
 __run sudo dnf -y install neovim \
     fd-find \
     ripgrep \
-    clang-tools-extra \
+    cmake clang-tools-extra \
     nodejs-bash-language-server \
     shellcheck \
     haskell-language-server \
