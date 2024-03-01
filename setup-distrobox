@@ -21,6 +21,7 @@ __run sudo dnf -y install neovim \
     fd-find \
     ripgrep \
     cmake clang-tools-extra gcc-c++ \
+    checksec openssl \
     nodejs-bash-language-server \
     shellcheck \
     haskell-language-server \
