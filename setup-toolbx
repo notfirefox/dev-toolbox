@@ -24,7 +24,7 @@ __run sudo dnf -y install neovim \
     clippy rust-analyzer \
     rustfmt \
     gh \
-    yt-dlp \
+    yt-dlp
 
 echo "Linking xdg-open to flatpak-xdg-open"
 __run sudo dnf -y remove xdg-utils
