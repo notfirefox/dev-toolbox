@@ -1,12 +1,10 @@
 #!/bin/sh
 
-CONTAINER_NAME="fedora"
-
 echo "Creating fedora container"
-toolbox --assumeyes create "$CONTAINER_NAME"
+toolbox -y create
 
 __run() {
-    toolbox run --container "$CONTAINER_NAME" "$@"
+    toolbox run "$@"
 }
 
 echo "Enabling copr repositories"
@@ -26,6 +24,10 @@ __run sudo dnf -y install neovim \
     rustfmt \
     gh \
     yt-dlp \
-    zsh
+
+echo "Linking xdg-open to flatpak-xdg-open"
+__run sudo dnf -y remove xdg-utils
+__run sudo dnf -y install flatpak-xdg-utils
+__run sudo ln -s /usr/bin/flatpak-xdg-open /usr/bin/xdg-open
 
 echo "Done!"
