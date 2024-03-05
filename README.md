@@ -12,5 +12,5 @@ including, but not limited to:
 ## Installation
 Run the setup script.
 ```sh
-./setup-distrobox
+./setup-toolbx
 ```
