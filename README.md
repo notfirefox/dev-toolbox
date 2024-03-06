@@ -2,12 +2,13 @@
 Development Container using [Toolbx](https://containertoolbx.org/)
 
 ## Installation
-> [!IMPORTANT]
-> There are some issue regarding Toolbx that are not resolved yet including:
-> - [gh auth login does not work inside of dev container](https://github.com/notfirefox/dev-container/issues/1)
-> - [Environment variables from .zshenv are not present](https://github.com/notfirefox/dev-container/issues/4)
-
-Run the setup script.
+Pull the dev-toolbox from the container registry.
 ```sh
-./setup-toolbx
+toolbox create --image "ghcr.io/notfirefox/dev-toolbox:latest"
+```
+
+## Usage
+The dev container can now be entered using the following command.
+```sh
+toolbox enter dev-toolbox-latest
 ```
