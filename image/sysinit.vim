@@ -5,14 +5,14 @@ endif
 const g:sysinit = v:true
 
 " Neovim config directory
-const config_dir = stdpath('config')
+const s:config_dir = stdpath('config')
 
 " Finish excecution if config directory already exists
-if isdirectory(config_dir)
+if isdirectory(s:config_dir)
     finish
 endif
 
 " Clone notfirefox/nvim-config into ~/.config/nvim
-echo 'Cloning config into ' . config_dir
-const repo_url = 'https://github.com/notfirefox/nvim-config.git'
-call system(['git', 'clone', repo_url, config_dir])
+echo 'Cloning config into ' . s:config_dir
+const s:repo_url = 'https://github.com/notfirefox/nvim-config.git'
+call system(['git', 'clone', s:repo_url, s:config_dir])
