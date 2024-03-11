@@ -19,13 +19,13 @@ RUN dnf --assumeyes install $(<extra-packages)
 RUN rm /extra-packages
 
 # Add nvim bootstrapping file
-# RUN mkdir -p /etc/xdg/nvim/
-# COPY sysinit.vim /etc/xdg/nvim/
+RUN mkdir -p /etc/xdg/nvim/
+COPY sysinit.vim /etc/xdg/nvim/
 
 # Fix xdg-open using symlink
-# RUN dnf --assumeyes remove xdg-utils
-# RUN dnf --assumeyes install flatpak-xdg-utils
-# RUN ln --symbolic /usr/bin/flatpak-xdg-open /usr/bin/xdg-open
+RUN dnf --assumeyes remove xdg-utils
+RUN dnf --assumeyes install flatpak-xdg-utils
+RUN ln --symbolic /usr/bin/flatpak-xdg-open /usr/bin/xdg-open
 
 # Clean dnf cache
 RUN dnf clean all
