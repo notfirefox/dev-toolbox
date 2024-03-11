@@ -10,22 +10,22 @@ LABEL com.github.containers.toolbox="true" \
       summary="Image for creating Fedora Toolbx containers"
 
 # Add COPR repositories
-RUN dnf --assumeyes copr enable petersen/haskell-language-server
-RUN dnf --assumeyes copr enable yorickpeterse/lua-language-server
+# RUN dnf --assumeyes copr enable petersen/haskell-language-server
+# RUN dnf --assumeyes copr enable yorickpeterse/lua-language-server
 
 # Install extra packages
-COPY extra-packages /
-RUN dnf --assumeyes install $(<extra-packages)
-RUN rm /extra-packages
+# COPY extra-packages /
+# RUN dnf --assumeyes install $(<extra-packages)
+# RUN rm /extra-packages
 
 # Add nvim bootstrapping file
-RUN mkdir -p /etc/xdg/nvim/
-COPY sysinit.vim /etc/xdg/nvim/
+# RUN mkdir -p /etc/xdg/nvim/
+# COPY sysinit.vim /etc/xdg/nvim/
 
 # Fix xdg-open using symlink
-RUN dnf --assumeyes remove xdg-utils
-RUN dnf --assumeyes install flatpak-xdg-utils
-RUN ln --symbolic /usr/bin/flatpak-xdg-open /usr/bin/xdg-open
+# RUN dnf --assumeyes remove xdg-utils
+# RUN dnf --assumeyes install flatpak-xdg-utils
+# RUN ln --symbolic /usr/bin/flatpak-xdg-open /usr/bin/xdg-open
 
 # Clean dnf cache
 RUN dnf clean all
