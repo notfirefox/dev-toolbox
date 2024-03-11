@@ -14,9 +14,9 @@ LABEL com.github.containers.toolbox="true" \
 # RUN dnf --assumeyes copr enable yorickpeterse/lua-language-server
 
 # Install extra packages
-# COPY extra-packages /
-# RUN dnf --assumeyes install $(<extra-packages)
-# RUN rm /extra-packages
+COPY extra-packages /
+RUN dnf --assumeyes install $(<extra-packages)
+RUN rm /extra-packages
 
 # Add nvim bootstrapping file
 # RUN mkdir -p /etc/xdg/nvim/

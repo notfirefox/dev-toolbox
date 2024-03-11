@@ -1,16 +1,1 @@
-clang-tools-extra
-clippy
-cmake
-fd-find
-gcc
-gcc-c++
-gh
-haskell-language-server
-lua-language-server
 neovim
-nodejs-bash-language-server
-ripgrep
-rust-analyzer
-rustfmt
-shellcheck
-yt-dlp
