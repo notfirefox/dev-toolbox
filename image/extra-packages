@@ -1,4 +1,8 @@
 clang-tools-extra
+clippy
+rust-analyzer
+rustfmt
+gh
 cmake
 fd-find
 gcc

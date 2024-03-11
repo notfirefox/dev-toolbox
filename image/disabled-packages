@@ -1,9 +1,5 @@
-clippy
-gh
 haskell-language-server
 lua-language-server
 nodejs-bash-language-server
-rust-analyzer
-rustfmt
 shellcheck
 yt-dlp
