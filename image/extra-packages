@@ -1,11 +1,12 @@
 clang-tools-extra
 clippy
-rust-analyzer
-rustfmt
-gh
 cmake
 fd-find
 gcc
 gcc-c++
+gh
+haskell-language-server
 neovim
 ripgrep
+rust-analyzer
+rustfmt
