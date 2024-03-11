@@ -1,1 +1,7 @@
+clang-tools-extra
+cmake
+fd-find
+gcc
+gcc-c++
 neovim
+ripgrep
