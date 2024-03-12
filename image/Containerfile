@@ -27,5 +27,8 @@ RUN dnf --assumeyes remove xdg-utils
 RUN dnf --assumeyes install flatpak-xdg-utils
 RUN ln --symbolic /usr/bin/flatpak-xdg-open /usr/bin/xdg-open
 
+# Fix konsole version (toolbx 0.0.99.5) 
+COPY konsole-version.sh /etc/profile.d/
+
 # Clean dnf cache
 RUN dnf clean all
