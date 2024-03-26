@@ -18,6 +18,9 @@ COPY extra-packages /
 RUN dnf --assumeyes install $(<extra-packages)
 RUN rm /extra-packages
 
+# Install slint lsp
+RUN cargo install slint-lsp
+
 # Add nvim bootstrapping file
 RUN mkdir -p /etc/xdg/nvim/
 COPY sysinit.vim /etc/xdg/nvim/
