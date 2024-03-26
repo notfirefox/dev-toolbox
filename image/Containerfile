@@ -1,8 +1,8 @@
-FROM registry.fedoraproject.org/fedora-toolbox:39
+FROM registry.fedoraproject.org/fedora-toolbox:40
 
 # Add image label
 ARG NAME=dev-toolbox
-ARG VERSION=39
+ARG VERSION=40
 LABEL com.github.containers.toolbox="true" \
       name="$NAME" \
       version="$VERSION" \
