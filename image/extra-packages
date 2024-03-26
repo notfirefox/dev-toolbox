@@ -9,6 +9,7 @@ haskell-language-server
 lua-language-server
 neovim
 nodejs-bash-language-server
+openssl-devel
 ripgrep
 rust-analyzer
 rustfmt
