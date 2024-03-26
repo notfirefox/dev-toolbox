@@ -11,6 +11,8 @@ neovim
 nodejs-bash-language-server
 openssl-devel
 plasma-integration
+qt5-qtbase-devel
+qt6-qtbase-devel
 ripgrep
 rust-analyzer
 rustfmt
