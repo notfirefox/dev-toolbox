@@ -10,6 +10,7 @@ lua-language-server
 neovim
 nodejs-bash-language-server
 openssl-devel
+plasma-integration
 ripgrep
 rust-analyzer
 rustfmt
