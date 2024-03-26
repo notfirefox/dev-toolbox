@@ -13,4 +13,5 @@ ripgrep
 rust-analyzer
 rustfmt
 shellcheck
+tmux
 yt-dlp
