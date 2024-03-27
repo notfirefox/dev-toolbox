@@ -1,0 +1,15 @@
+#!/bin/sh
+
+GITHUB_URL="https://github.com/slint-ui/slint/releases/latest/download"
+
+install() {
+    TOOL="$1"
+    wget "$GITHUB_URL/$TOOL-linux.tar.gz"
+    tar xvzf "$TOOL-linux.tar.gz" "$TOOL/$TOOL"
+    rm "$TOOL-linux.tar.gz"
+    mv "$TOOL/$TOOL" "/usr/bin"
+    rmdir "$TOOL"
+}
+
+install "slint-lsp"
+install "slint-viewer"
