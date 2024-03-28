@@ -23,9 +23,6 @@ COPY slint-tools /
 RUN /slint-tools
 RUN rm /slint-tools
 
-# Install vim language server
-RUN npm install -g vim-language-server
-
 # Add nvim bootstrapping file
 RUN mkdir -p /etc/xdg/nvim/
 COPY sysinit.vim /etc/xdg/nvim/
