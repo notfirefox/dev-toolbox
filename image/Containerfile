@@ -23,11 +23,6 @@ RUN rm /slint-tools
 RUN mkdir -p /etc/xdg/nvim/
 COPY sysinit.vim /etc/xdg/nvim/
 
-# Fix xdg-open using symlink
-RUN dnf --assumeyes remove xdg-utils
-RUN dnf --assumeyes install flatpak-xdg-utils
-RUN ln --symbolic /usr/bin/flatpak-xdg-open /usr/bin/xdg-open
-
 # Fix konsole version (toolbx 0.0.99.5) 
 COPY konsole-version.sh /etc/profile.d/
 
