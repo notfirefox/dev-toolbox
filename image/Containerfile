@@ -9,6 +9,10 @@ LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox(1) command" \
       summary="Image for creating Fedora Toolbx containers"
 
+# Enable copr repositories
+RUN dnf --assumeyes copr enable petersen/haskell-language-server
+RUN dnf --assumeyes copr enable yorickpeterse/lua-language-server
+
 # Install extra packages
 COPY extra-packages /
 RUN dnf --assumeyes install $(<extra-packages)
