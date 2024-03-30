@@ -18,17 +18,17 @@ COPY extra-packages /
 RUN dnf --assumeyes install $(<extra-packages)
 RUN rm /extra-packages
 
+# Clean dnf cache
+RUN dnf clean all
+
 # Install slint tools
 COPY slint-tools /
 RUN /slint-tools
 RUN rm /slint-tools
 
-# Fix konsole version (toolbx 0.0.99.5) 
-COPY konsole-version.sh /etc/profile.d/
-
 # Add bubblewrap sandbox
 COPY sandbox /usr/local/bin/
 RUN echo "exec /usr/local/bin/sandbox" >> /etc/profile
 
-# Clean dnf cache
-RUN dnf clean all
+# Fix konsole version (toolbx 0.0.99.5) 
+COPY konsole-version.sh /etc/profile.d/
