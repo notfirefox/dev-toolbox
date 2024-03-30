@@ -7,7 +7,7 @@ install() {
     wget "$GITHUB_URL/$TOOL-linux.tar.gz"
     tar xvzf "$TOOL-linux.tar.gz" "$TOOL/$TOOL"
     rm "$TOOL-linux.tar.gz"
-    mv "$TOOL/$TOOL" "/usr/bin"
+    mv "$TOOL/$TOOL" "/usr/local/bin"
     rmdir "$TOOL"
 }
 
