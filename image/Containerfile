@@ -26,5 +26,9 @@ COPY sysinit.vim /etc/xdg/nvim/
 # Fix konsole version (toolbx 0.0.99.5) 
 COPY konsole-version.sh /etc/profile.d/
 
+# Add bubblewrap sandbox
+COPY sandbox /usr/local/bin/
+RUN echo "exec /usr/local/bin/sandbox" >> /etc/profile
+
 # Clean dnf cache
 RUN dnf clean all

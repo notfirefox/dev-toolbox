@@ -17,4 +17,5 @@ rust-analyzer
 rustfmt
 shellcheck
 tmux
+xdg-dbus-proxy
 yt-dlp
