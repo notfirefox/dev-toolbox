@@ -19,10 +19,6 @@ COPY slint-tools /
 RUN /slint-tools
 RUN rm /slint-tools
 
-# Add nvim bootstrapping file
-RUN mkdir -p /etc/xdg/nvim/
-COPY sysinit.vim /etc/xdg/nvim/
-
 # Fix konsole version (toolbx 0.0.99.5) 
 COPY konsole-version.sh /etc/profile.d/
 
