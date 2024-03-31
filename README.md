@@ -4,11 +4,11 @@
 ## Installation
 Create a dev toolbox from the latest image.
 ```sh
-toolbox create --image "ghcr.io/notfirefox/dev-toolbox:latest"
+toolbox create --image "ghcr.io/notfirefox/dev-toolbox:40"
 ```
 
 ## Usage
 Enter the dev toolbox using the following command.
 ```sh
-toolbox enter dev-toolbox-latest
+toolbox enter dev-toolbox-40
 ```
