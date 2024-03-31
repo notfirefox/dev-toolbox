@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: dev-toolbox
+      IMAGE_VERSION: 40
       REGISTRY: ghcr.io/notfirefox
     permissions:
       contents: read
@@ -27,9 +28,10 @@ jobs:
         with:
           context: image
           image: ${{ env.IMAGE_NAME }}
-          tags: latest ${{ github.sha }}
-          containerfiles: |
-            image/Containerfile
+          tags: ${{ env.IMAGE_VERSION }} latest
+          containerfiles: image/Containerfile
+          layers: false
+          oci: true
 
       - name: Log in to the GitHub Container registry
         uses: redhat-actions/podman-login@v1
