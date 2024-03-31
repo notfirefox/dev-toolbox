@@ -1,7 +1,7 @@
 #!/bin/sh
 
-DBUS_PROXY="$XDG_RUNTIME_DIR/xdg-dbus-proxy"
 WAYLAND="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
+DBUS_PROXY="$XDG_RUNTIME_DIR/xdg-dbus-proxy"
 
 mkdir --parents "$DBUS_PROXY"
 xdg-dbus-proxy \
@@ -9,6 +9,10 @@ xdg-dbus-proxy \
     "$DBUS_PROXY/secret-service.sock" \
     --filter \
     --own=org.freedesktop.secrets.* &
+
+. "/run/.containerenv"
+CONTAINER_DIR="$HOME/Toolbox/$name"
+mkdir --parents "$CONTAINER_DIR"
 
 bwrap \
     --ro-bind /bin /bin \
@@ -22,18 +26,9 @@ bwrap \
     --ro-bind "/run/.containerenv" "/run/.containerenv" \
     --ro-bind "/run/.toolboxenv" "/run/.toolboxenv" \
     --ro-bind "/run/systemd/resolve" "/run/systemd/resolve" \
-    --ro-bind "$HOME/.bashrc" "$HOME/.bashrc" \
-    --ro-bind "$HOME/.bash_history" "$HOME/.bash_history" \
-    --ro-bind "$HOME/.bash_logout" "$HOME/.bash_logout" \
-    --ro-bind "$HOME/.bash_profile" "$HOME/.bash_profile" \
-    --ro-bind "$HOME/.gitconfig" "$HOME/.gitconfig" \
     --bind "$DBUS_PROXY/secret-service.sock" "$XDG_RUNTIME_DIR/bus" \
-    --bind "$HOME/.cargo" "$HOME/.cargo" \
-    --bind "$HOME/.config/gh"  "$HOME/.config/gh" \
-    --bind "$HOME/.config/toolbox" "$HOME/.config/toolbox" \
-    --bind "$HOME/.config/nvim" "$HOME/.config/nvim" \
-    --bind "$HOME/.local/share/nvim" "$HOME/.local/share/nvim" \
-    --bind "$HOME/Development" "$HOME/Development" \
+    --bind "$CONTAINER_DIR" "$HOME" \
+    --chdir "$HOME" \
     --dev /dev \
     --proc /proc \
     --tmpfs /tmp \
