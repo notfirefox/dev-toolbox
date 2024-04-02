@@ -19,6 +19,7 @@ bwrap \
     --ro-bind /etc /etc \
     --ro-bind /lib /lib \
     --ro-bind /lib64 /lib64 \
+    --ro-bind /opt /opt \
     --ro-bind /sbin /sbin \
     --ro-bind /usr /usr \
     --ro-bind /sys /sys \
