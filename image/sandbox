@@ -1,15 +1,36 @@
 #!/bin/sh
 
-WAYLAND="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
-DBUS_PROXY="$XDG_RUNTIME_DIR/xdg-dbus-proxy"
+if [ -z "$SANDBOX" ]; then
+    SANDBOX="$(date +%T)"
+    export SANDBOX
 
-mkdir --parents "$DBUS_PROXY"
-xdg-dbus-proxy \
-    "$DBUS_SESSION_BUS_ADDRESS" \
-    "$DBUS_PROXY/secret-service.sock" \
-    --filter \
-    --own=org.freedesktop.secrets.* &
+    . "/run/.containerenv"
+    CONTAINER_DIR="$HOME/Toolbox/$name"
+    mkdir --parents "$CONTAINER_DIR"
 
+<<<<<<< HEAD
+    bwrap \
+        --ro-bind /bin /bin \
+        --ro-bind /etc /etc \
+        --ro-bind /lib /lib \
+        --ro-bind /lib64 /lib64 \
+        --ro-bind /opt /opt \
+        --ro-bind /sbin /sbin \
+        --ro-bind /usr /usr \
+        --ro-bind /sys /sys \
+        --ro-bind "/run/.containerenv" "/run/.containerenv" \
+        --ro-bind "/run/.toolboxenv" "/run/.toolboxenv" \
+        --ro-bind "/run/systemd/resolve" "/run/systemd/resolve" \
+        --bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
+        --bind "$CONTAINER_DIR" "$HOME" \
+        --chdir "$HOME" \
+        --dev /dev \
+        --proc /proc \
+        --tmpfs /tmp \
+        --dev-bind /dev/dri /dev/dri \
+        /usr/bin/bash
+fi
+=======
 . "/run/.containerenv"
 CONTAINER_DIR="$HOME/Toolbox/$name"
 mkdir --parents "$CONTAINER_DIR"
@@ -19,6 +40,7 @@ bwrap \
     --ro-bind /etc /etc \
     --ro-bind /lib /lib \
     --ro-bind /lib64 /lib64 \
+    --ro-bind /opt /opt \
     --ro-bind /sbin /sbin \
     --ro-bind /usr /usr \
     --ro-bind /sys /sys \
@@ -34,3 +56,4 @@ bwrap \
     --tmpfs /tmp \
     --dev-bind /dev/dri /dev/dri \
     /usr/bin/bash
+>>>>>>> 458b994 (Add ro-binding for `/opt`)
