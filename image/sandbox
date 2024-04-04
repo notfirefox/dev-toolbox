@@ -1,14 +1,9 @@
 #!/bin/sh
 
-WAYLAND="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
-DBUS_PROXY="$XDG_RUNTIME_DIR/xdg-dbus-proxy"
+SANDBOX="$(date +%T)"
+export SANDBOX
 
-mkdir --parents "$DBUS_PROXY"
-xdg-dbus-proxy \
-    "$DBUS_SESSION_BUS_ADDRESS" \
-    "$DBUS_PROXY/secret-service.sock" \
-    --filter \
-    --own=org.freedesktop.secrets.* &
+WAYLAND="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
 
 . "/run/.containerenv"
 CONTAINER_DIR="$HOME/Toolbox/$name"
@@ -27,7 +22,6 @@ bwrap \
     --ro-bind "/run/.containerenv" "/run/.containerenv" \
     --ro-bind "/run/.toolboxenv" "/run/.toolboxenv" \
     --ro-bind "/run/systemd/resolve" "/run/systemd/resolve" \
-    --bind "$DBUS_PROXY/secret-service.sock" "$XDG_RUNTIME_DIR/bus" \
     --bind "$CONTAINER_DIR" "$HOME" \
     --chdir "$HOME" \
     --dev /dev \
