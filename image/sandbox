@@ -13,7 +13,7 @@ cp --no-clobber --recursive "/etc/skel/." "$CONTAINER_DIR" 2>/dev/null
 # Fix `Bad owner or permissions on /etc/ssh/ssh_config.d/50-redhat.conf`
 CONF_FILE="/etc/ssh/ssh_config.d/50-redhat.conf"
 if [ -f "$CONF_FILE" ]; then
-    mv "$CONF_FILE" "$CONF_FILE.disabled"
+    sudo mv "$CONF_FILE" "$CONF_FILE.disabled"
 fi
 
 bwrap \
