@@ -30,4 +30,5 @@ bwrap \
     --tmpfs /tmp \
     --tmpfs "/etc/ssh/ssh_config.d" \
     --dev-bind /dev/dri /dev/dri \
+    --setenv KONSOLE_VERSION "240201"\
     /usr/bin/bash
