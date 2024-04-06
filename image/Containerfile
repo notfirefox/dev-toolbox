@@ -26,6 +26,6 @@ COPY slint-tools /
 RUN /slint-tools
 RUN rm /slint-tools
 
-# Add bubblewrap sandbox
+# Add container sandbox
 COPY sandbox /usr/local/bin/
 RUN echo '[ -z "$SANDBOX" ] && exec "/usr/local/bin/sandbox"' >> /etc/profile
