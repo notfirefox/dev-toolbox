@@ -1,8 +1,5 @@
 #!/bin/sh
 
-SANDBOX="$(date +%T)"
-export SANDBOX
-
 WAYLAND="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
 
 . "/run/.containerenv"
