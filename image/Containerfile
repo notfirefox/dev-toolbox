@@ -29,6 +29,3 @@ RUN rm /slint-tools
 # Add bubblewrap sandbox
 COPY sandbox /usr/local/bin/
 RUN echo '[ -z "$SANDBOX" ] && exec "/usr/local/bin/sandbox"' >> /etc/profile
-
-# Fix konsole version (toolbx 0.0.99.5) 
-COPY konsole-version.sh /etc/profile.d/
