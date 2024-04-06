@@ -10,5 +10,5 @@ toolbox -y create -i "ghcr.io/notfirefox/dev-toolbox:40"
 ## Usage
 Enter the dev toolbox using the following command.
 ```sh
-toolbox enter dev-toolbox-40
+toolbox run -c dev-toolbox-40 sandbox
 ```
