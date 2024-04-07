@@ -4,7 +4,7 @@
 ## Installation
 Create a dev toolbox from the latest image.
 ```sh
-toolbox -y create -i "ghcr.io/notfirefox/dev-toolbox:40"
+toolbox -y create -i "quay.io/notfirefox/dev-toolbox:40"
 ```
 
 ## Usage
