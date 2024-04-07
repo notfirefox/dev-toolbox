@@ -1,26 +1,32 @@
-name: Build dev-toolbox container
+name: Build and push container
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [main]
+    paths:
+      - image/**
+      - .github/workflows/container.yaml
+  push:
+    branches: [main]
+    paths:
+      - image/**
+      - .github/workflows/container.yaml
   schedule:
     - cron:  '0 0 * * TUE'
   workflow_dispatch:
 
-jobs:
-  build:
-    name: Build image
-    runs-on: ubuntu-latest
-    env:
-      IMAGE_NAME: dev-toolbox
-      IMAGE_VERSION: 40
-      REGISTRY: ghcr.io/notfirefox
-    permissions:
-      contents: read
-      packages: write
-    steps:
+env:
+  IMAGE_NAME: dev-toolbox
+  IMAGE_VERSION: 40
+  REGISTRY: quay.io/notfirefox
 
+permissions: read-all
+
+jobs:
+  build-push-container:
+    name: Build container
+    runs-on: ubuntu-latest
+    steps:
       - name: Clone the repository
         uses: actions/checkout@v4
 
@@ -35,20 +41,13 @@ jobs:
           layers: false
           oci: true
 
-      - name: Log in to the GitHub Container registry
-        uses: redhat-actions/podman-login@v1
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push to GitHub Container Repository
-        id: push-to-ghcr
+      - name: Push To Quay
+        id: push-to-quay
+        if: (github.event_name == 'push' || github.event_name == 'schedule') && github.ref == 'refs/heads/main'
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ steps.build-image.outputs.image }}
-          tags: ${{ steps.build-image.outputs.tags }}
+          username: ${{ secrets.BOT_USERNAME }}
+          password: ${{ secrets.BOT_SECRET }}
+          image: ${{ env.IMAGE_NAME }}
           registry: ${{ env.REGISTRY }}
-
-      - name: Print image URL
-        run: echo "Image pushed to ${{ steps.push-to-ghcr.outputs.registry-paths }}"
+          tags: ${{ env.IMAGE_VERSION }} latest
