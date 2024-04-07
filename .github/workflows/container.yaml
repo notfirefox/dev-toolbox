@@ -2,7 +2,8 @@ name: Build and push container
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
+    types: [closed, opened, reopened, synchronize]
     paths:
       - image/**
       - .github/workflows/container.yaml
