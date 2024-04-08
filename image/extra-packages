@@ -1,3 +1,4 @@
+breeze-cursor-theme
 bubblewrap
 clang-tools-extra
 clippy
@@ -15,6 +16,8 @@ lua-language-server
 neovim
 nodejs-bash-language-server
 openssl-devel
+plasma-breeze
+plasma-integration-qt5
 qqc2-desktop-style
 qt5-qtbase-devel
 qt5-qtdeclarative-devel
