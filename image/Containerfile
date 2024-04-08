@@ -11,12 +11,12 @@ LABEL com.github.containers.toolbox="true" \
       summary="Image for creating Fedora Toolbx containers"
 
 # Enable copr repositories
-RUN dnf --assumeyes copr enable petersen/haskell-language-server
-RUN dnf --assumeyes copr enable yorickpeterse/lua-language-server
+RUN dnf -y copr enable petersen/haskell-language-server
+RUN dnf -y copr enable yorickpeterse/lua-language-server
 
 # Install extra packages
 COPY extra-packages /
-RUN dnf --assumeyes install $(<extra-packages)
+RUN dnf -y install $(<extra-packages)
 RUN rm /extra-packages
 
 # Clean dnf cache
