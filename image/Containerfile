@@ -22,10 +22,5 @@ RUN rm /extra-packages
 # Clean dnf cache
 RUN dnf clean all
 
-# Install slint tools
-COPY slint-tools /
-RUN /slint-tools
-RUN rm /slint-tools
-
 # Add container sandbox
 COPY sandbox /usr/local/bin/
