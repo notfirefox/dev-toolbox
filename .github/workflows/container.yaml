@@ -43,11 +43,11 @@ jobs:
 
       - name: Push To Quay
         id: push-to-quay
-        if: (github.event_name == 'push' || github.event_name == 'schedule')
+        if: (github.event_name == 'push' || github.event_name == 'schedule') && github.ref == 'refs/heads/main'
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ env.IMAGE_NAME }}
-          tags: ${{ env.IMAGE_VERSION }} latest
-          registry: ${{ env.REGISTRY }}
           username: ${{ secrets.BOT_USERNAME }}
-          password: ${{ secrets.BOT_PASSWORD }}
+          password: ${{ secrets.BOT_SECRET }}
+          image: ${{ env.IMAGE_NAME }}
+          registry: ${{ env.REGISTRY }}
+          tags: ${{ env.IMAGE_VERSION }} latest
