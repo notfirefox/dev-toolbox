@@ -6,6 +6,7 @@ ARG VERSION=40
 LABEL com.github.containers.toolbox="true" \
       name="$NAME" \
       version="$VERSION" \
+      quay.expires-after="4w" \
       usage="This image is meant to be used with the toolbox(1) command" \
       summary="Image for creating Fedora Toolbx containers"
 
