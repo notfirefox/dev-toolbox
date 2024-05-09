@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# update repositories
+sudo apt update
+
+# install packages
+sudo apt install \
+    bubblewrap \
+    build-essential \
+    clangd \
+    cmake \
+    fd-find \
+    ripgrep \
+    rust-clippy \
+    rustfmt \
+    shellcheck \
+    software-properties-common \
+    tmux \
+    yt-dlp
+
+# install neovim
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt update && sudo apt install neovim

@@ -1,26 +1,19 @@
-FROM registry.fedoraproject.org/fedora-toolbox:40
+FROM quay.io/toolbx/ubuntu:24.04
 
 # Add image label
 ARG NAME=dev-toolbox
-ARG VERSION=40
+ARG VERSION=24.04
 LABEL com.github.containers.toolbox="true" \
       name="$NAME" \
       version="$VERSION" \
       quay.expires-after="4w" \
       usage="This image is meant to be used with the toolbox(1) command" \
-      summary="Image for creating Fedora Toolbx containers"
+      summary="Image for creating Ubuntu Toolbx containers"
 
-# Enable copr repositories
-RUN dnf -y copr enable petersen/haskell-language-server
-RUN dnf -y copr enable yorickpeterse/lua-language-server
-
-# Install extra packages
-COPY extra-packages /
-RUN dnf -y install $(<extra-packages)
-RUN rm /extra-packages
-
-# Clean dnf cache
-RUN dnf clean all
+# Run installation script
+COPY install /tmp/
+RUN /tmp/install
+RUN rm /tmp/install
 
 # Add container sandbox
 COPY sandbox /usr/local/bin/

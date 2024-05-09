@@ -17,7 +17,7 @@ on:
 
 env:
   IMAGE_NAME: dev-toolbox
-  IMAGE_VERSION: 40
+  IMAGE_VERSION: 24.04
   REGISTRY: quay.io/notfirefox
 
 permissions: read-all
