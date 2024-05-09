@@ -2,7 +2,6 @@ bubblewrap
 clang-tools-extra
 clippy
 cmake
-extra-cmake-modules
 fd-find
 gcc
 gcc-c++
@@ -10,11 +9,9 @@ haskell-language-server
 lua-language-server
 neovim
 nodejs-bash-language-server
-restic
 ripgrep
 rust-analyzer
 rustfmt
 shellcheck
 tmux
-valgrind
 yt-dlp
