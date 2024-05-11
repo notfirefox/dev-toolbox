@@ -5,7 +5,7 @@ WAYLAND="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
 . "/run/.containerenv"
 CONTAINER_DIR="$HOME/Toolbox/$name"
 mkdir --parents "$CONTAINER_DIR"
-cp --no-clobber --recursive "/etc/skel/." "$CONTAINER_DIR"
+cp --recursive --update=none "/etc/skel/." "$CONTAINER_DIR"
 
 detect_yubikey() {
     FILES="/dev/hidraw*"
@@ -35,7 +35,6 @@ bwrap \
     --ro-bind "/run/.containerenv" "/run/.containerenv" \
     --ro-bind "/run/.toolboxenv" "/run/.toolboxenv" \
     --ro-bind "/run/systemd/resolve" "/run/systemd/resolve" \
-    --ro-bind "/run/host/etc/resolv.conf" "/run/host/etc/resolv.conf" \
     --bind "$CONTAINER_DIR" "$HOME" \
     --chdir "$HOME" \
     --dev /dev \
