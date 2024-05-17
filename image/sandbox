@@ -45,5 +45,4 @@ bwrap \
     --tmpfs "/etc/ssh/ssh_config.d" \
     --dev-bind "/dev/dri" "/dev/dri" \
     --dev-bind "$YUBIKEY" "$YUBIKEY" \
-    --setenv KONSOLE_VERSION "240201"\
     /usr/bin/bash
