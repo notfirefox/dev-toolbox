@@ -9,21 +9,6 @@ cp --recursive --update=none "/etc/skel/." "$HOME_DIR"
 
 WORKING_DIR=$(pwd | sed -e "s/\/var\/home/\/home/")
 
-detect_yubikey() {
-    FILES="/dev/hidraw*"
-    for f in $FILES
-    do
-        FILE=${f##*/}
-        DEVICE_FILE="/sys/class/hidraw/$FILE/device/uevent"
-        if grep -q "Yubico YubiKey FIDO" "$DEVICE_FILE"; then
-            printf "%s" "$f"
-            return
-        fi
-    done
-    printf "/dev/null"
-}
-YUBIKEY=$(detect_yubikey)
-
 bwrap \
     --ro-bind /bin /bin \
     --ro-bind /etc /etc \
@@ -47,5 +32,4 @@ bwrap \
     --tmpfs /tmp \
     --tmpfs "/etc/ssh/ssh_config.d" \
     --dev-bind "/dev/dri" "/dev/dri" \
-    --dev-bind "$YUBIKEY" "$YUBIKEY" \
     /usr/bin/bash
