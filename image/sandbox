@@ -3,9 +3,9 @@
 WAYLAND="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
 X11_UNIX="/tmp/.X11-unix"
 
-HOME_DIR="$HOME/.var/box"
-mkdir --parents "$HOME_DIR"
-cp --recursive --update=none "/etc/skel/." "$HOME_DIR"
+ISOLATED_HOME="$HOME/.var/box"
+mkdir --parents "$ISOLATED_HOME"
+cp --recursive --update=none "/etc/skel/." "$ISOLATED_HOME"
 
 WORKING_DIR=$(pwd | sed -e "s/\/var\/home/\/home/")
 
@@ -24,7 +24,7 @@ bwrap \
     --ro-bind "/run/.containerenv" "/run/.containerenv" \
     --ro-bind "/run/.toolboxenv" "/run/.toolboxenv" \
     --ro-bind "/run/systemd/resolve" "/run/systemd/resolve" \
-    --bind "$HOME_DIR" "$HOME" \
+    --bind "$ISOLATED_HOME" "$HOME" \
     --bind "$WORKING_DIR" "$WORKING_DIR" \
     --chdir "$WORKING_DIR" \
     --dev /dev \
