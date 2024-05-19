@@ -1,6 +1,7 @@
 #!/bin/sh
 
 WAYLAND="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"
+X11_UNIX="/tmp/.X11-unix"
 
 HOME_DIR="$HOME/.var/box"
 mkdir --parents "$HOME_DIR"
@@ -33,6 +34,8 @@ bwrap \
     --ro-bind /usr /usr \
     --ro-bind /sys /sys \
     --ro-bind "$WAYLAND" "$WAYLAND" \
+    --ro-bind "$X11_UNIX" "$X11_UNIX" \
+    --ro-bind "$XAUTHORITY" "$XAUTHORITY" \
     --ro-bind "/run/.containerenv" "/run/.containerenv" \
     --ro-bind "/run/.toolboxenv" "/run/.toolboxenv" \
     --ro-bind "/run/systemd/resolve" "/run/systemd/resolve" \
