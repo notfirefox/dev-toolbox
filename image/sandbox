@@ -7,8 +7,6 @@ ISOLATED_HOME="$HOME/.var/box"
 mkdir --parents "$ISOLATED_HOME"
 cp --recursive --update=none "/etc/skel/." "$ISOLATED_HOME"
 
-WORKING_DIR=$(pwd | sed -e "s/\/var\/home/\/home/")
-
 bwrap \
     --ro-bind /bin /bin \
     --ro-bind /etc /etc \
@@ -25,8 +23,7 @@ bwrap \
     --ro-bind "/run/.toolboxenv" "/run/.toolboxenv" \
     --ro-bind "/run/systemd/resolve" "/run/systemd/resolve" \
     --bind "$ISOLATED_HOME" "$HOME" \
-    --bind "$WORKING_DIR" "$WORKING_DIR" \
-    --chdir "$WORKING_DIR" \
+    --chdir "$HOME" \
     --dev /dev \
     --proc /proc \
     --tmpfs /tmp \
