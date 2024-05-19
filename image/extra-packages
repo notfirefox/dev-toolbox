@@ -6,6 +6,7 @@ fd-find
 gcc
 gcc-c++
 haskell-language-server
+java-latest-openjdk
 lua-language-server
 neovim
 nodejs-bash-language-server
